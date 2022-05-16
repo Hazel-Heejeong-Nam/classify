@@ -9,12 +9,24 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.7.0",
+    "lodash": "^4.17.21",
     "next": "12.1.6",
+    "prettier": "^2.6.2",
+    "puppeteer": "^14.0.0",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react-dom": "18.1.0",
+    "write-json-file": "^5.0.0"
   },
   "devDependencies": {
     "eslint": "8.15.0",
     "eslint-config-next": "12.1.6"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "jsxSingleQuote": true
   }
 }
