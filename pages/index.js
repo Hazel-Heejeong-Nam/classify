@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Navbar from '../components/Navbar'
 
 export default function Home() {
   async function getClasses() {
@@ -19,7 +20,7 @@ export default function Home() {
         <meta name='description' content='Classify - Spotify for Classes' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-
+      <Navbar />
       <main>
         <button onClick={getClasses}>get</button>
       </main>
