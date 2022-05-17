@@ -2,18 +2,7 @@ import Head from 'next/head'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
-export default function Home() {
-  async function getClasses() {
-    const res = await fetch('http://localhost:3000/api/classes', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }).then((res) => res.json())
-
-    console.log(res)
-  }
-
+export default function Personal() {
   return (
     <div>
       <Head>
@@ -22,9 +11,7 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Navbar />
-      <main>
-        <button onClick={getClasses}>get</button>
-      </main>
+      <main></main>
       <Footer />
     </div>
   )

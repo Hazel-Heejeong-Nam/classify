@@ -6,6 +6,7 @@ import FormInput from '../components/FormInput'
 import { useForm } from 'react-hook-form'
 import { Button, Card, Container, Grid, Stack } from '@mui/material'
 import FormAutocomplete from '../components/FormAutocomplete'
+import Footer from '../components/Footer'
 
 export default function Register() {
   const router = useRouter()
@@ -107,7 +108,7 @@ export default function Register() {
           </Grid>
         </Container>
       </main>
-      <footer></footer>
+      <Footer />
     </div>
   )
 }

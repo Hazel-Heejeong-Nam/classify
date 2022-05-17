@@ -6,6 +6,7 @@ import FormInput from '../components/FormInput'
 import { useForm } from 'react-hook-form'
 import { Button, Card, Container, Grid, Stack } from '@mui/material'
 import { UserContext } from '../contexts/UserContext'
+import Footer from '../components/Footer'
 
 export default function Login() {
   const { user, setUser } = useContext(UserContext)
@@ -63,7 +64,7 @@ export default function Login() {
           </Grid>
         </Container>
       </main>
-      <footer></footer>
+      <Footer />
     </div>
   )
 }

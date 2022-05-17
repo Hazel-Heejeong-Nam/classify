@@ -4,7 +4,18 @@ import { useContext } from 'react'
 import Link from 'next/link'
 
 const Navbar = () => {
-  const userPages = ['Recommendations', 'Generate', 'Personal Info', 'Log']
+  const userPages = [
+    'Recommendations',
+    'Generate Schedules',
+    'Personal Information',
+    'Quarter Course Log',
+  ]
+  const userPageLinks = {
+    Recommendations: 'recommendations',
+    Generate_Schedules: 'generate',
+    Personal_Information: 'personal',
+    Quarter_Course_Log: 'log',
+  }
   const guestPages = ['Register', 'Login']
   const { user, setUser } = useContext(UserContext)
 
@@ -25,6 +36,7 @@ const Navbar = () => {
                 key={page}
                 variant='outlined'
                 color='inherit'
+                href={`/${userPageLinks[page.replaceAll(' ', '_')]}`}
               >
                 {page}
               </Button>
