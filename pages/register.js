@@ -42,6 +42,12 @@ export default function Register() {
   // TODO: redirect to login after successful submission
   const register = (data) => {
     // router.push('/login')
+    let res = fetch(`/api/register`, {
+      method: 'POST',
+      body: JSON.stringify({
+        data,
+      }),
+    })
     console.log(data)
   }
   return (

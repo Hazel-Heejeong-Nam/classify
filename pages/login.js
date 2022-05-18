@@ -19,11 +19,23 @@ export default function Login() {
   // })
 
   // TODO: redirect to main page after successful submission
-  const login = (data) => {
+  const login = async (data) => {
     // router.push('/')
     console.log(data)
-    setUser({ username: 'bruin' })
-    localStorage.setItem('user', JSON.stringify({ username: 'bruin' }))
+    let res = await fetch(`/api/login`, {
+      method: 'POST',
+      body: JSON.stringify({
+        data,
+      }),
+    })
+    if (!res.ok) {
+      console.log('wrong info buddy')
+      return
+    }
+    const { token, username } = await res.json()
+    const user = { username: username, token: token }
+    setUser(user)
+    localStorage.setItem('user', JSON.stringify(user))
   }
   return (
     <div>
