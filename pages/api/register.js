@@ -33,7 +33,7 @@ export default async function handler(req, res) {
         major: body.major,
         year: body.year,
         ratings: [],
-        recommendations: {},
+        recommendations: { 'CS 35L': 1 },
       }
       await db.collection('users').insertOne(newUser)
       res.json({ status: 201 })

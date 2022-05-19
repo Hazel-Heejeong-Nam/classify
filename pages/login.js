@@ -18,9 +18,7 @@ export default function Login() {
   //   if (user) router.push('/')
   // })
 
-  // TODO: redirect to main page after successful submission
   const login = async (data) => {
-    // router.push('/')
     console.log(data)
     let res = await fetch(`/api/login`, {
       method: 'POST',
@@ -36,6 +34,7 @@ export default function Login() {
     const user = { username: username, token: token }
     setUser(user)
     localStorage.setItem('user', JSON.stringify(user))
+    router.push('/')
   }
   return (
     <div>

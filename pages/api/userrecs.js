@@ -23,10 +23,9 @@ export default async function handler(req, res) {
       res.status(200).json()
       break
     case 'GET':
-      body = JSON.parse(req.body).data
       user = await db
         .collection('users')
-        .find({ username: body.username })
+        .find({ username: req.query.username })
         .next()
       if (!user) {
         return res.status(401).json({

@@ -53,8 +53,6 @@ export default function Register() {
     'Architectural Studies (B.A.)',
     'Art History (B.A.)',
     'Dance (B.A.)',
-
-
   ]
 
   const STEMMajors = [
@@ -82,9 +80,7 @@ export default function Register() {
   //   if (user) router.push('/')
   // })
 
-  // TODO: redirect to login after successful submission
   const register = (data) => {
-    // router.push('/login')
     let res = fetch(`/api/register`, {
       method: 'POST',
       body: JSON.stringify({
@@ -92,6 +88,7 @@ export default function Register() {
       }),
     })
     console.log(data)
+    router.push('/login')
   }
   return (
     <div>

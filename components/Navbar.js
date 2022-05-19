@@ -2,6 +2,7 @@ import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material'
 import { UserContext } from '../contexts/UserContext'
 import { useContext } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const Navbar = () => {
   const userPages = [
@@ -18,10 +19,11 @@ const Navbar = () => {
   }
   const guestPages = ['Register', 'Login']
   const { user, setUser } = useContext(UserContext)
-
+  const router = useRouter()
   const handleLogout = () => {
     setUser(null)
     localStorage.removeItem('user')
+    router.push('/')
   }
 
   return (
