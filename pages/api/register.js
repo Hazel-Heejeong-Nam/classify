@@ -32,6 +32,8 @@ export default async function handler(req, res) {
         password: password,
         major: body.major,
         year: body.year,
+        ratings: [],
+        recommendations: {},
       }
       await db.collection('users').insertOne(newUser)
       res.json({ status: 201 })
