@@ -2,7 +2,21 @@ import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material'
 import { UserContext } from '../contexts/UserContext'
 import { useContext } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+
+
+const ucla = createTheme({
+  palette: {
+    uclablue: {
+      main: '#1a64db',
+      contrastText: '#ffe438'
+    },
+    uclayellow: {
+      main: '#ffe438',
+      contrastText: '#1a64db'
+    },
+  },
+});
 
 const Navbar = () => {
   const userPages = [
@@ -19,14 +33,14 @@ const Navbar = () => {
   }
   const guestPages = ['Register', 'Login']
   const { user, setUser } = useContext(UserContext)
-  const router = useRouter()
+
   const handleLogout = () => {
     setUser(null)
     localStorage.removeItem('user')
-    router.push('/')
   }
 
   return (
+    <ThemeProvider theme={ucla}>
     <AppBar position='static'>
       <Toolbar>
         <Link href='/'>Classify</Link>
@@ -36,8 +50,8 @@ const Navbar = () => {
               <Button
                 sx={{ mr: '5px', display: 'inline-block' }}
                 key={page}
-                variant='outlined'
-                color='inherit'
+                variant='contained'
+                color= "uclayellow"
                 href={`/${userPageLinks[page.replaceAll(' ', '_')]}`}
               >
                 {page}
@@ -72,6 +86,7 @@ const Navbar = () => {
         <Typography>{user?.username ?? 'Guest Bruin'}</Typography>
       </Toolbar>
     </AppBar>
+    </ThemeProvider>
   )
 }
 
