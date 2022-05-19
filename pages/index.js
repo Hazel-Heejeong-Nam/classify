@@ -1,7 +1,10 @@
 import Head from 'next/head'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { Button, Card, Container, Grid, Stack } from '@mui/material'
+import { useForm } from 'react-hook-form'
 
+var recom = null
 export default function Home() {
   async function getClasses() {
     const res = await fetch('http://localhost:3000/api/classes', {
@@ -10,8 +13,9 @@ export default function Home() {
         'Content-Type': 'application/json',
       },
     }).then((res) => res.json())
-
     console.log(res)
+    recom = res
+    alert('Result now available! For this demo, please check console to see the result!')
   }
 
   return (
@@ -23,7 +27,21 @@ export default function Home() {
       </Head>
       <Navbar />
       <main>
-        <button onClick={getClasses}>get</button>
+        <Container>
+          <Grid
+            container
+            direction='column'
+            alignItems='center'
+            justifyContent='center'
+          >
+          </Grid>
+          <Stack spacing={3}> 
+            <p>Click 'Get' and wait. I will let you know when the result is ready!</p>
+          </Stack>
+          <Button variant='outlined' type='submit' onClick={getClasses}>
+            GET
+          </Button> 
+        </Container>
       </main>
       <Footer />
     </div>
