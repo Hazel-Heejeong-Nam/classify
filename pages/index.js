@@ -5,6 +5,7 @@ import { Button, Card, Container, Grid, Stack } from '@mui/material'
 import { useForm } from 'react-hook-form'
 import { UserContext } from '../contexts/UserContext'
 import { useContext, useState } from 'react'
+import { Box } from '@mui/system'
 
 var recom = null
 export default function Home() {
@@ -19,9 +20,6 @@ export default function Home() {
     }).then((res) => res.json())
     console.log(res)
     recom = res
-    alert(
-      'Result now available! For this demo, please check console to see the result!'
-    )
   }
   async function getRecs() {
     const res = await fetch(
@@ -56,10 +54,30 @@ export default function Home() {
           ></Grid>
           <Stack spacing={3}>
             {user && !recommendation && (
-              <p>
-                Click 'Get' and wait. I will let you know when the result is
-                ready!
-              </p>
+              <Container>
+                <Grid
+                  container
+                  direction='column'
+                  alignItems='center'
+                  justifyContent='center'
+                >
+                <p>
+                  Click 'Get' and wait. I will let you know when the result is
+                  ready!
+                </p>
+                <Box
+                  component = "img"
+                  sx={{
+                    height: 300,
+                    width: 300,
+                  }}
+                  src= '../logo.png'
+                />
+                <Button variant='contained' type='submit' onClick={getRecs}>
+                  GET RECOMMENDATION
+                </Button>
+                </Grid>
+              </Container>
             )}
             {user && recommendation && (
               <p>Here is your recommendation: {recommendation}</p>
@@ -71,11 +89,6 @@ export default function Home() {
               </p>
             )}
           </Stack>
-          {user && !recommendation && (
-            <Button variant='outlined' type='submit' onClick={getRecs}>
-              GET RECOMMENDATION
-            </Button>
-          )}
         </Container>
       </main>
       <Footer />
