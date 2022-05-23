@@ -7,11 +7,25 @@ import { useForm } from 'react-hook-form'
 import { Button, Card, Container, Grid, Stack } from '@mui/material'
 import FormAutocomplete from '../components/FormAutocomplete'
 import Footer from '../components/Footer'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+
 
 export default function Register() {
   const router = useRouter()
   const { control, handleSubmit } = useForm()
 
+  const ucla = createTheme({
+    palette: {
+      uclablue: {
+        main: '#162330',
+        contrastText: '#ffffff'
+      },
+      uclayellow: {
+        main: '#c99906',
+        contrastText: '#1a64db'
+      },
+    },
+  });
   // TODO: add the rest of the majors
   // Separated list of majors for easy editing (theoretically)
   const LSMajors = [
@@ -91,70 +105,72 @@ export default function Register() {
     router.push('/login')
   }
   return (
-    <div>
-      <Head>
-        <title>Classify</title>
-        <meta name='description' content='Classify - Spotify for Classes' />
-        <link rel='icon' href='/favicon.ico' />
-      </Head>
-      <Navbar />
-      <main>
-        <Container>
-          <Grid
-            container
-            direction='column'
-            alignItems='center'
-            justifyContent='center'
-          >
-            <Card sx={{ minWidth: '350px', padding: '30px', m: '30px' }}>
-              <form onSubmit={handleSubmit(register)}>
-                <Stack spacing={3}>
-                  <FormInput name='name' control={control} label='Name' />
-                  <FormInput
-                    name='username'
-                    control={control}
-                    label='Username'
-                  />
-                  <FormInput
-                    name='email'
-                    control={control}
-                    label='UCLA Email'
-                  />
-                  <FormInput
-                    name='password'
-                    control={control}
-                    label='Password'
-                    type='password'
-                  />
-                  <FormInput
-                    name='confPassword'
-                    control={control}
-                    label='Confirm Password'
-                    type='password'
-                  />
-                  <FormAutocomplete
-                    name='major'
-                    control={control}
-                    label='Major'
-                    options={possibleMajors}
-                  />
-                  {/* TODO: reevaluate if year is needed, since year doesn't really mean much*/}
-                  <FormAutocomplete
-                    name='year'
-                    control={control}
-                    label='Year'
-                    options={possibleYears}
-                  />
-                  <Button variant='outlined' type='submit'>
-                    REGISTER
-                  </Button>
-                </Stack>
-              </form>
-            </Card>
-          </Grid>
-        </Container>
-      </main>
-      <Footer />
-    </div>
+    <ThemeProvider theme = {ucla}>
+      <div>
+        <Head>
+          <title>Classify</title>
+          <meta name='description' content='Classify - Spotify for Classes' />
+          <link rel='icon' href='/favicon.ico' />
+        </Head>
+        <Navbar />
+        <main>
+          <Container>
+            <Grid
+              container
+              direction='column'
+              alignItems='center'
+              justifyContent='center'
+            >
+              <Card sx={{ minWidth: '350px', padding: '30px', m: '30px' }}>
+                <form onSubmit={handleSubmit(register)}>
+                  <Stack spacing={3}>
+                    <FormInput name='name' control={control} label='Name' />
+                    <FormInput
+                      name='username'
+                      control={control}
+                      label='Username'
+                    />
+                    <FormInput
+                      name='email'
+                      control={control}
+                      label='UCLA Email'
+                    />
+                    <FormInput
+                      name='password'
+                      control={control}
+                      label='Password'
+                      type='password'
+                    />
+                    <FormInput
+                      name='confPassword'
+                      control={control}
+                      label='Confirm Password'
+                      type='password'
+                    />
+                    <FormAutocomplete
+                      name='major'
+                      control={control}
+                      label='Major'
+                      options={possibleMajors}
+                    />
+                    {/* TODO: reevaluate if year is needed, since year doesn't really mean much*/}
+                    <FormAutocomplete
+                      name='year'
+                      control={control}
+                      label='Year'
+                      options={possibleYears}
+                    />
+                    <Button variant='contained' type='submit' color = 'uclablue'>
+                      REGISTER
+                    </Button>
+                  </Stack>
+                </form>
+              </Card>
+            </Grid>
+          </Container>
+        </main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   )
 }
