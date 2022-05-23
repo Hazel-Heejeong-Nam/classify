@@ -1,16 +1,35 @@
 import Head from 'next/head'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import { Button, Card, Container, Grid, Stack, Typography } from '@mui/material'
+import { Button, Card, Container, Grid, Stack, Typography, Rating } from '@mui/material'
 import FormInput from '../components/FormInput'
 import { useForm } from 'react-hook-form'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState, number } from 'react'
 import { UserContext } from '../contexts/UserContext'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import FormAutocomplete from '../components/FormAutocomplete'
 
 export default function Log() {
   const { control, handleSubmit } = useForm()
   const { user } = useContext(UserContext)
   const [courses, setCourses] = useState(null)
+  const ucla = createTheme({
+    palette: {
+      uclablue: {
+        main: '#162330',
+        contrastText: '#ffffff'
+      },
+      uclayellow: {
+        main: '#c99906',
+        contrastText: '#1a64db'
+      },
+      cardcolor : {
+        main : '#b5bdc9'
+      }
+    },
+  });
+  const possibleYears = ['2022','2021', '2020', '2019', '2018', '2017','2016','2015','2014']
+  const possibleQuarters = ['Fall', 'Winter', 'Spring']
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'))
@@ -47,49 +66,74 @@ export default function Log() {
   }
 
   return (
-    <div>
-      <Head>
-        <title>Classify</title>
-        <meta name='description' content='Classify - Spotify for Classes' />
-        <link rel='icon' href='/favicon.ico' />
-      </Head>
-      <Navbar />
-      <main>
-        <Container>
-          <Grid
-            container
-            direction='column'
-            alignItems='center'
-            justifyContent='center'
-          >
-            <Card sx={{ minWidth: '350px', padding: '30px', m: '30px' }}>
-              <form onSubmit={handleSubmit(addRating)}>
-                <Stack spacing={3}>
-                  <FormInput name='course' control={control} label='Course' />
-                  <FormInput name='rating' control={control} label='Rating' />
-                  <Button variant='outlined' type='submit'>
-                    ADD COURSE
-                  </Button>
-                </Stack>
-              </form>
-            </Card>
-            {courses && (
+    <ThemeProvider theme = {ucla}>
+      <div>
+        <Head>
+          <title>Classify</title>
+          <meta name='description' content='Classify - Spotify for Classes' />
+          <link rel='icon' href='/favicon.ico' />
+        </Head>
+        <Navbar />
+        <main>
+          <Container>
+            <Grid
+              container
+              direction='column'
+              alignItems='center'
+              justifyContent='center'
+            >
               <Card sx={{ minWidth: '350px', padding: '30px', m: '30px' }}>
                 <form onSubmit={handleSubmit(addRating)}>
                   <Stack spacing={3}>
-                    {courses.map((course) => (
-                      <Typography>
-                        {course['course']}: {course['rating']}
-                      </Typography>
-                    ))}
+                    <FormInput name='course' control={control} label='Course' />
+                      <Grid 
+                        container
+                        direction="row"
+                        justifyContent="space-between"
+                        alignItems="center"
+                      >
+                        <Grid item xs={5}>
+                          <FormAutocomplete
+                            name='year'
+                            control={control}
+                            label='Year'
+                            options = {possibleYears}
+                          />
+                        </Grid>
+                        <Grid item xs={6}>
+                          <FormAutocomplete
+                            name='quarter'
+                            control={control}
+                            label='Quarter'
+                            options={possibleQuarters}
+                          />
+                        </Grid>
+                      </Grid>
+                    <FormInput name='rating' control={control} label='Rating' />
+                    <Button variant='contained' type='submit'>
+                      ADD COURSE
+                    </Button>
                   </Stack>
                 </form>
               </Card>
-            )}
-          </Grid>
-        </Container>
-      </main>
-      <Footer />
-    </div>
+              {courses && (
+                <Card sx={{ minWidth: '350px', padding: '30px', m: '30px' }}>
+                  <form onSubmit={handleSubmit(addRating)}>
+                    <Stack spacing={3}>
+                      {courses.map((course) => (
+                        <Typography>
+                          {course['year']} : {course['quarter']}: {course['course']}: {course['rating']}
+                        </Typography>
+                      ))}
+                    </Stack>
+                  </form>
+                </Card>
+              )}
+            </Grid>
+          </Container>
+        </main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   )
 }
