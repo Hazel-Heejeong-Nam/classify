@@ -8,11 +8,12 @@ const Footer = () => {
           square
           sx={{
             mt: '30px',
-            height: '40px',
+            height: '50px',
             p: 1,
             textAlign: 'center',
             background: '#000000',
-            border: 3,
+            borderTop: 3,
+            borderBottom : 3,
             borderColor :'#c99906'
           }}
         >
