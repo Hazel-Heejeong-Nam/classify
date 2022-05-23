@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   switch (req.method) {
     case 'POST':
       body = JSON.parse(req.body).data
-      const courseRating = { course: body.course, rating: body.rating }
+      const courseRating = { year: body.year, quarter: body.quarter, course: body.course, rating: body.rating }
       user = await db
         .collection('users')
         .findOneAndUpdate(
