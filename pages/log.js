@@ -110,7 +110,7 @@ export default function Log() {
                         </Grid>
                       </Grid>
                     <FormInput name='rating' control={control} label='Rating' />
-                    <Button variant='contained' type='submit'>
+                    <Button variant='contained' type='submit' color = 'uclablue'>
                       ADD COURSE
                     </Button>
                   </Stack>
