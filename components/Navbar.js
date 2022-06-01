@@ -12,6 +12,8 @@ import { useContext } from 'react'
 import Link from 'next/link'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 
+
+
 const ucla = createTheme({
   palette: {
     uclablue: {
@@ -69,17 +71,19 @@ const Navbar = () => {
                 height: 40,
                 width: 40,
               }}
+              src='https://postfiles.pstatic.net/MjAyMjA2MDJfMjUg/MDAxNjU0MTIyMzk5OTE4.8OqxEH2E7RcVc9cqLofMmmtLGC6cbJye5P4Omomjkkog.jQnXa5TCK-s_mxNl5wlFtyyh4Omj2QxX4KlQzCJP138g.PNG.hatbi2000/image.png?type=w773'
             />
-            <Typography
-              sx={{
-                fontWeight: 'bold',
-                fontSize: 33,
-                ml: 2,
-              }}
-            >
-              <Link href='/'>CLASSify</Link>
-            </Typography>
-
+            <Link href='/'>
+              <Box
+                sx={{
+                  fontWeight: 'bold',
+                  fontSize: 33,
+                  margin: 2,
+                }}
+              >
+                CLASSify
+              </Box>
+            </Link>
             {user && (
               <Box sx={{ mr: '0', ml: 'auto' }}>
                 {userPages.map((page) => (
@@ -104,7 +108,6 @@ const Navbar = () => {
                 </Button>
               </Box>
             )}
-
             {!user && (
               <Box sx={{ mr: '0', ml: 'auto' }}>
                 {guestPages.map((page) => (
