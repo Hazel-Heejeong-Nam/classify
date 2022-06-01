@@ -69,19 +69,18 @@ const Navbar = () => {
                 height: 40,
                 width: 40,
               }}
-              src='logo.png'
+              src='logo2.jpg'
             />
-            <Link href='/'>
-              <Box
-                sx={{
-                  fontWeight: 'bold',
-                  fontSize: 33,
-                  margin: 2,
-                }}
-              >
-                CLASSify
-              </Box>
-            </Link>
+            <Typography
+              sx={{
+                fontWeight: 'bold',
+                fontSize: 33,
+                ml: 2,
+              }}
+            >
+              <Link href='/'>CLASSify</Link>
+            </Typography>
+
             {user && (
               <Box sx={{ mr: '0', ml: 'auto' }}>
                 {userPages.map((page) => (
@@ -106,6 +105,7 @@ const Navbar = () => {
                 </Button>
               </Box>
             )}
+
             {!user && (
               <Box sx={{ mr: '0', ml: 'auto' }}>
                 {guestPages.map((page) => (

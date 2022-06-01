@@ -61,21 +61,21 @@ export default function Home() {
                   alignItems='center'
                   justifyContent='center'
                 >
-                <p>
-                  Click 'Get' and wait. I will let you know when the result is
-                  ready!
-                </p>
-                <Box
-                  component = "img"
-                  sx={{
-                    height: 300,
-                    width: 300,
-                  }}
-                  src= '../logo.png'
-                />
-                <Button variant='contained' type='submit' onClick={getRecs}>
-                  GET RECOMMENDATION
-                </Button>
+                  <p>
+                    Click 'Get' and wait. I will let you know when the result is
+                    ready!
+                  </p>
+                  <Box
+                    component='img'
+                    sx={{
+                      height: 380,
+                      width: 540,
+                    }}
+                    src='welcome.jpg'
+                  />
+                  <Button variant='contained' type='submit' onClick={getRecs}>
+                    GET RECOMMENDATION
+                  </Button>
                 </Grid>
               </Container>
             )}
