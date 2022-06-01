@@ -180,20 +180,23 @@ export default async function handler(req, res) {
   let prefixed_classes = {}
   for (let key of Object.keys(items)) {
     if ('Lecture 1' in items[key]) {
-      prefixed_classes[`${req.query.prefix} ` + key] = items[key]
+      prefixed_classes[`${req.query.prefix.replaceAll(' ', '')} ` + key] =
+        items[key]
     }
   }
   const client = await clientPromise
   await client.connect()
   const db = client.db('classify')
   const title = `${req.query.dep} (${req.query.prefix})`
-  await db
-    .collection('classes')
-    .findOneAndUpdate(
-      { department: title, prefix: `${req.query.prefix}` },
-      { $set: { classes: prefixed_classes } },
-      { upsert: true }
-    )
+  await db.collection('classes').findOneAndUpdate(
+    {
+      department: title,
+      prefix: `${req.query.prefix}`,
+      class_prefix: `${req.query.prefix.replaceAll(' ', '')}`,
+    },
+    { $set: { classes: prefixed_classes } },
+    { upsert: true }
+  )
   // await writeJsonFile('CEE_S22.json', JSON.stringify(items))
-  res.status(200).json(items)
+  res.status(200).json(prefixed_classes)
 }
