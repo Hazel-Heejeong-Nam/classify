@@ -69,7 +69,7 @@ const Navbar = () => {
                 height: 40,
                 width: 40,
               }}
-              src='logo.png'
+              src='https://postfiles.pstatic.net/MjAyMjA2MDJfMjUg/MDAxNjU0MTIyMzk5OTE4.8OqxEH2E7RcVc9cqLofMmmtLGC6cbJye5P4Omomjkkog.jQnXa5TCK-s_mxNl5wlFtyyh4Omj2QxX4KlQzCJP138g.PNG.hatbi2000/image.png?type=w773'
             />
             <Link href='/'>
               <Box
