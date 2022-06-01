@@ -11,6 +11,7 @@ import { UserContext } from '../contexts/UserContext'
 import { useContext } from 'react'
 import Link from 'next/link'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { useRouter } from 'next/router'
 
 const ucla = createTheme({
   palette: {
@@ -44,6 +45,7 @@ const Navbar = () => {
   }
   const guestPages = ['Register', 'Login']
   const { user, setUser } = useContext(UserContext)
+  const router = useRouter()
 
   const handleLogout = () => {
     setUser(null)
