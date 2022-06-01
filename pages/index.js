@@ -83,10 +83,21 @@ export default function Home() {
               <p>Here is your recommendation: {recommendation}</p>
             )}
             {!user && (
-              <p>
-                Please create an account or log into your account to see a
-                recommendation!
-              </p>
+              <Grid
+                container
+                direction='column'
+                alignItems='center'
+                justifyContent='center'
+              >
+                <Box
+                  component='img'
+                  sx={{
+                    height: 600,
+                    width: 800,
+                  }}
+                  src='https://postfiles.pstatic.net/MjAyMjA2MDJfODMg/MDAxNjU0MTIyMjcwNzE3.2fThIQuTaZl2OOT3uba6gGl6gd-N_JCWGtpJXlqYDIAg.N-WoprcIWBYp_Q_BT1sC1uOEiwYw9EiqbSLIHNR3x-Ug.JPEG.hatbi2000/welcome.jpg?type=w773'
+                />
+              </Grid>
             )}
           </Stack>
         </Container>

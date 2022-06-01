@@ -69,7 +69,6 @@ const Navbar = () => {
                 height: 40,
                 width: 40,
               }}
-              src='logo2.jpg'
             />
             <Typography
               sx={{
