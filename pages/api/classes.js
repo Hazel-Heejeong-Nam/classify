@@ -177,8 +177,11 @@ export default async function handler(req, res) {
   let item = await scrapeClasses()
   let coocoo = await scrapeClassData()
   let items = _.merge(item, coocoo)
+  let prefixed_classes = {}
   for (let key of Object.keys(items)) {
-    if (!('Lecture 1' in items[key])) delete items[key]
+    if ('Lecture 1' in items[key]) {
+      prefixed_classes[`${req.query.prefix} ` + key] = items[key]
+    }
   }
   const client = await clientPromise
   await client.connect()
@@ -187,8 +190,8 @@ export default async function handler(req, res) {
   await db
     .collection('classes')
     .findOneAndUpdate(
-      { department: title },
-      { $set: { classes: items } },
+      { department: title, prefix: `${req.query.prefix}` },
+      { $set: { classes: prefixed_classes } },
       { upsert: true }
     )
   // await writeJsonFile('CEE_S22.json', JSON.stringify(items))
