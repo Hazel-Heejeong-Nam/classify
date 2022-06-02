@@ -14,12 +14,10 @@ export default function Login() {
   const router = useRouter()
   const { control, handleSubmit } = useForm()
 
-  // TODO: redirect to main page if already logged in
-  // useEffect(() => {
-  //   if (user) router.push('/')
-  // })
+  useEffect(() => {
+    if (user) router.push('/')
+  })
 
-  
   const ucla = createTheme({
     palette: {
       uclablue: {

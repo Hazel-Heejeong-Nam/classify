@@ -161,10 +161,9 @@ export default function Register() {
   const possibleMajors = aa.concat(Engineering)
   const possibleYears = ['Freshmen', 'Sophomore', 'Junior', 'Senior']
 
-  // TODO: redirect to main page if already logged in
-  // useEffect(() => {
-  //   if (user) router.push('/')
-  // })
+  useEffect(() => {
+    if (user) router.push('/')
+  })
 
   const register = (data) => {
     let res = fetch(`/api/register`, {
