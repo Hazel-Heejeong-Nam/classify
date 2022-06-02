@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Navbar from '../components/Navbar'
-import { useEffect } from 'react'
+import { useEffect, useContext } from 'react'
 import { useRouter } from 'next/router'
 import FormInput from '../components/FormInput'
 import { useForm } from 'react-hook-form'
@@ -8,8 +8,10 @@ import { Button, Card, Container, Grid, Stack } from '@mui/material'
 import FormAutocomplete from '../components/FormAutocomplete'
 import Footer from '../components/Footer'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { UserContext } from '../contexts/UserContext'
 
 export default function Register() {
+  const { user } = useContext(UserContext)
   const router = useRouter()
   const { control, handleSubmit } = useForm()
 

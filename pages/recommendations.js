@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import { Container, Grid, Stack } from '@mui/material'
+import { Card, Container, Grid, Stack } from '@mui/material'
 import { useState, useContext, useEffect } from 'react'
 import { UserContext } from '../contexts/UserContext'
 
@@ -36,37 +36,48 @@ export default function Recommendations() {
         <Container>
           <Stack spacing={3}>
             <Container>
-              <Grid
-                container
-                direction='column'
-                alignItems='center'
-                justifyContent='center'
-              >
-                {/*<p>*/}
-                {/*  Click 'Get' and wait. I will let you know when the result is*/}
-                {/*  ready!*/}
-                {/*</p>*/}
-                {/*<Button variant='contained' type='submit' onClick={getRecs}>*/}
-                {/*  GET RECOMMENDATION*/}
-                {/*</Button>*/}
-                { recommendation &&
-                <div style={{color:"white"}}>
-                <p>Here are your recommendations: </p>
-                <ul>
-                {recommendation.map((rec,index)=>{
-                  return <li> Because you liked {rec[0]} : 
-                            <ul>
-                              {rec[1].map((item,i)=>{
-                                return <li> {item[1]} : {(100.*item[2]).toFixed(1)} % match</li>
-                              })}
-                            </ul>  
-                        </li>
-                  })}
-                </ul>
-                </div>
-
-                }
-              </Grid>
+              <Card sx={{ minWidth: '350px', padding: '30px', m: '30px' }}>
+                <Grid
+                  container
+                  direction='column'
+                  alignItems='center'
+                  justifyContent='center'
+                >
+                  {/*<p>*/}
+                  {/*  Click 'Get' and wait. I will let you know when the result is*/}
+                  {/*  ready!*/}
+                  {/*</p>*/}
+                  {/*<Button variant='contained' type='submit' onClick={getRecs}>*/}
+                  {/*  GET RECOMMENDATION*/}
+                  {/*</Button>*/}
+                  {recommendation && (
+                    <div style={{}}>
+                      <p>Here are your recommendations: </p>
+                      <ul>
+                        {recommendation.map((rec, index) => {
+                          return (
+                            <li>
+                              {' '}
+                              Because you liked {rec[0]} :
+                              <ul>
+                                {rec[1].map((item, i) => {
+                                  return (
+                                    <li>
+                                      {' '}
+                                      {item[1]} : {(100 * item[2]).toFixed(1)} %
+                                      match
+                                    </li>
+                                  )
+                                })}
+                              </ul>
+                            </li>
+                          )
+                        })}
+                      </ul>
+                    </div>
+                  )}
+                </Grid>
+              </Card>
             </Container>
           </Stack>
         </Container>

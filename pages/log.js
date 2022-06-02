@@ -18,7 +18,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 
 export default function Log() {
   const { user } = useContext(UserContext)
-  const [courses, setCourses] = useState('')
+  const [courses, setCourses] = useState([])
   const [department, setDepartment] = useState('')
   const [department_courses, setDepartment_courses] = useState('')
   const [department_iv, setDepartment_iv] = useState('')
@@ -261,7 +261,6 @@ export default function Log() {
   })
 
   const addRating = (e) => {
-    e.preventDefault()
     if (course === '' || year === '' || quarter === '' || rating === '') return
     const data = {
       course: course,
@@ -296,7 +295,7 @@ export default function Log() {
               alignItems='center'
               justifyContent='center'
             >
-              <Card sx={{ minWidth: '350px', padding: '30px', m: '30px' }}>
+              <Card sx={{ minWidth: '650px', padding: '30px', m: '30px' }}>
                 <form onSubmit={addRating}>
                   <Stack spacing={3}>
                     <Autocomplete
@@ -387,13 +386,13 @@ export default function Log() {
                   </Stack>
                 </form>
               </Card>
-              {courses && (
-                <Card sx={{ minWidth: '350px', padding: '30px', m: '30px' }}>
+              {courses !== [] && (
+                <Card sx={{ minWidth: '650px', padding: '30px', m: '30px' }}>
                   <Stack spacing={3}>
                     {courses.map((course) => (
                       <Typography key={course.course + course.rating}>
-                        {course['year']} : {course['quarter']}:{' '}
-                        {course['course']}: {course['rating']}
+                        {course.quarter} {course.year}: {course.course} [
+                        {course.rating}]
                       </Typography>
                     ))}
                   </Stack>
