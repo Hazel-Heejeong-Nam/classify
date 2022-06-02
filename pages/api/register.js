@@ -35,6 +35,36 @@ export default async function handler(req, res) {
         ratings: [],
         recommendations: { 'CS 35L': 1 },
       }
+
+      let user_to_ix = await db
+        .collection('uimat')
+        .find({ name : "user_to_ix"})
+        .next()
+
+      console.log(Object.keys(user_to_ix["data"]).length)
+
+      var update = { "$set": {} }
+  
+      update["$set"]["data." + body.username] = Object.keys(user_to_ix["data"]).length
+
+      let r2 = await db
+      .collection('uimat')
+      .findOneAndUpdate(
+        { name: "user_to_ix" },
+        update
+      )
+
+      r2 = await db
+      .collection('uimat')
+      .findOneAndUpdate(
+        { name: "uimatrix" },
+        { $push : {data : Array(2375).fill(0)}}
+      )
+
+      if (!r2) {
+        console.log("Error in updating uimatrix")
+      }
+
       await db.collection('users').insertOne(newUser)
       res.json({ status: 201 })
       break

@@ -32,7 +32,7 @@ export default function Home() {
       }
     )
       .then((res) => res.json())
-      .then((rec) => setRecommendation(Object.keys(rec)[0]))
+      .then((rec) => setRecommendation(Array(rec.recs)[0]))
     alert('Result now available!')
   }
 
@@ -80,7 +80,20 @@ export default function Home() {
               </Container>
             )}
             {user && recommendation && (
-              <p>Here is your recommendation: {recommendation}</p>
+              <div style={{color:"white"}}>
+              <p>Here is your recommendation: </p>
+              <ul>
+              {recommendation.map((rec,index)=>{
+                return <li> Because you liked {rec[0]} : 
+                          <ul>
+                            {rec[1].map((item,i)=>{
+                              return <li> {item[1]} : {(100.*item[2]).toFixed(1)} % match</li>
+                            })}
+                          </ul>  
+                       </li>
+                })}
+              </ul>
+              </div>
             )}
             {!user && (
               <Grid
