@@ -9,7 +9,6 @@ import FormAutocomplete from '../components/FormAutocomplete'
 import Footer from '../components/Footer'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 
-
 export default function Register() {
   const router = useRouter()
   const { control, handleSubmit } = useForm()
@@ -18,14 +17,14 @@ export default function Register() {
     palette: {
       uclablue: {
         main: '#162330',
-        contrastText: '#ffffff'
+        contrastText: '#ffffff',
       },
       uclayellow: {
         main: '#c99906',
-        contrastText: '#1a64db'
+        contrastText: '#1a64db',
       },
     },
-  });
+  })
   const LSMajors = [
     'African American Studies (B.A.)',
     'African and Middle Eastern Studies (B.A.)',
@@ -103,7 +102,7 @@ export default function Register() {
     'Linguistics and Spanish (B.A.)',
     'Linguistics, Applied (B.A.)',
     'Marine Biology (B.S.)',
-    'Mathematics (B.S.)', 
+    'Mathematics (B.S.)',
     'Mathematics, Applied (B.S.)',
     'Mathematics/Applied Science (B.S.)',
     'Mathematics, Data Theory (B.S.)',
@@ -146,7 +145,7 @@ export default function Register() {
     'Individual Field of Concentration in the Arts and Architecture (B.A.)',
   ]
 
-  const Engineering =[
+  const Engineering = [
     'Aerospace Engineering (B.S.)',
     'Bioengineering (B.S.)',
     'Chemical Engineering (B.S.)',
@@ -178,12 +177,12 @@ export default function Register() {
     router.push('/login')
   }
   return (
-    <ThemeProvider theme = {ucla}>
+    <ThemeProvider theme={ucla}>
       <div>
         <Head>
           <title>Classify</title>
           <meta name='description' content='Classify - Spotify for Classes' />
-          <link rel='icon' href='/favicon.ico' />
+          <link rel='icon' href='/logo2.jpg' />
         </Head>
         <Navbar />
         <main>
@@ -233,7 +232,7 @@ export default function Register() {
                       label='Year'
                       options={possibleYears}
                     />
-                    <Button variant='contained' type='submit' color = 'uclablue'>
+                    <Button variant='contained' type='submit' color='uclablue'>
                       REGISTER
                     </Button>
                   </Stack>

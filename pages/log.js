@@ -285,7 +285,7 @@ export default function Log() {
         <Head>
           <title>Classify</title>
           <meta name='description' content='Classify - Spotify for Classes' />
-          <link rel='icon' href='/favicon.ico' />
+          <link rel='icon' href='/logo2.jpg' />
         </Head>
         <Navbar />
         <main>

@@ -15,17 +15,17 @@ export default function Personal() {
     palette: {
       uclablue: {
         main: '#162330',
-        contrastText: '#ffffff'
+        contrastText: '#ffffff',
       },
       uclayellow: {
         main: '#c99906',
-        contrastText: '#1a64db'
+        contrastText: '#1a64db',
       },
-      cardcolor : {
-        main : '#b5bdc9'
-      }
+      cardcolor: {
+        main: '#b5bdc9',
+      },
     },
-  });
+  })
   const LSMajors = [
     'African American Studies (B.A.)',
     'African and Middle Eastern Studies (B.A.)',
@@ -103,7 +103,7 @@ export default function Personal() {
     'Linguistics and Spanish (B.A.)',
     'Linguistics, Applied (B.A.)',
     'Marine Biology (B.S.)',
-    'Mathematics (B.S.)', 
+    'Mathematics (B.S.)',
     'Mathematics, Applied (B.S.)',
     'Mathematics/Applied Science (B.S.)',
     'Mathematics, Data Theory (B.S.)',
@@ -146,7 +146,7 @@ export default function Personal() {
     'Individual Field of Concentration in the Arts and Architecture (B.A.)',
   ]
 
-  const Engineering =[
+  const Engineering = [
     'Aerospace Engineering (B.S.)',
     'Bioengineering (B.S.)',
     'Chemical Engineering (B.S.)',
@@ -162,12 +162,12 @@ export default function Personal() {
   const possibleMajors = aa.concat(Engineering)
   const possibleYears = ['Freshmen', 'Sophomore', 'Junior', 'Senior']
   return (
-    <ThemeProvider theme = {ucla}>
+    <ThemeProvider theme={ucla}>
       <div>
         <Head>
           <title>Classify</title>
           <meta name='description' content='Classify - Spotify for Classes' />
-          <link rel='icon' href='/favicon.ico' />
+          <link rel='icon' href='/logo2.jpg' />
         </Head>
         <Navbar />
         <main>
@@ -177,8 +177,7 @@ export default function Personal() {
               direction='column'
               alignItems='center'
               justifyContent='center'
-            >
-            </Grid>
+            ></Grid>
             <Card sx={{ minWidth: '350px', padding: '30px', m: '30px' }}>
               <Stack spacing={3}>
                 <p>1. Set your major</p>
@@ -199,7 +198,7 @@ export default function Personal() {
               <Button variant='contained' type='submit' color='uclablue'>
                 SAVE
               </Button>
-            </Card>         
+            </Card>
           </Container>
         </main>
         <Footer />
@@ -207,4 +206,3 @@ export default function Personal() {
     </ThemeProvider>
   )
 }
-
