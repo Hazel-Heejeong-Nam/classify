@@ -61,10 +61,6 @@ export default function Home() {
                   alignItems='center'
                   justifyContent='center'
                 >
-                  <p>
-                    Click 'Get' and wait. I will let you know when the result is
-                    ready!
-                  </p>
                   <Box
                     component='img'
                     sx={{
