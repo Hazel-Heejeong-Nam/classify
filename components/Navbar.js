@@ -14,6 +14,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { useRouter } from 'next/router'
 
 const ucla = createTheme({
+  typography: {
+    fontFamily: ['Book Antiqua'].join(','),
+    button: { fontWeight: 'bolder' },
+  },
   palette: {
     uclablue: {
       main: '#a7becf',
@@ -78,6 +82,7 @@ const Navbar = () => {
                 fontWeight: 'bold',
                 fontSize: 33,
                 ml: 2,
+                mb: -0.5,
               }}
             >
               <Link href='/'>CLASSify</Link>
