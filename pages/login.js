@@ -14,26 +14,23 @@ export default function Login() {
   const router = useRouter()
   const { control, handleSubmit } = useForm()
 
-  // TODO: redirect to main page if already logged in
-  // useEffect(() => {
-  //   if (user) router.push('/')
-  // })
+  useEffect(() => {
+    if (user) router.push('/')
+  })
 
-  
   const ucla = createTheme({
     palette: {
       uclablue: {
         main: '#162330',
-        contrastText: '#ffffff'
+        contrastText: '#ffffff',
       },
       uclayellow: {
         main: '#c99906',
-        contrastText: '#1a64db'
+        contrastText: '#1a64db',
       },
     },
-  });
-  
-  
+  })
+
   const login = async (data) => {
     console.log(data)
     let res = await fetch(`/api/login`, {
@@ -58,7 +55,7 @@ export default function Login() {
         <Head>
           <title>Classify</title>
           <meta name='description' content='Classify - Spotify for Classes' />
-          <link rel='icon' href='/favicon.ico' />
+          <link rel='icon' href='/logo2.jpg' />
         </Head>
         <Navbar />
         <main>
@@ -83,11 +80,7 @@ export default function Login() {
                       label='Password'
                       type='password'
                     />
-                    <Button 
-                      variant='contained' 
-                      type='submit'
-                      color = 'uclablue'
-                    >
+                    <Button variant='contained' type='submit' color='uclablue'>
                       LOG IN
                     </Button>
                   </Stack>

@@ -10,32 +10,32 @@ import FormAutocomplete from '../components/FormAutocomplete'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 
 export default function Generate() {
-  const majorclassnum = ['1','2','3','4']
-  const geclassnum = ['1','2','3','4']
+  const majorclassnum = ['1', '2', '3', '4']
+  const geclassnum = ['1', '2', '3', '4']
   const { control, handleSubmit } = useForm()
   const ucla = createTheme({
     palette: {
       uclablue: {
         main: '#162330',
-        contrastText: '#ffffff'
+        contrastText: '#ffffff',
       },
       uclayellow: {
         main: '#c99906',
-        contrastText: '#1a64db'
+        contrastText: '#1a64db',
       },
-      cardcolor : {
-        main : '#b5bdc9'
-      }
+      cardcolor: {
+        main: '#b5bdc9',
+      },
     },
-  });
+  })
 
   return (
-    <ThemeProvider theme = {ucla}>
+    <ThemeProvider theme={ucla}>
       <div>
         <Head>
           <title>Classify</title>
           <meta name='description' content='Classify - Spotify for Classes' />
-          <link rel='icon' href='/favicon.ico' />
+          <link rel='icon' href='/logo2.jpg' />
         </Head>
         <Navbar />
         <main>
@@ -45,51 +45,54 @@ export default function Generate() {
               direction='column'
               alignItems='center'
               justifyContent='center'
-            >
-            </Grid>
+            ></Grid>
             <Card sx={{ minWidth: '350px', padding: '30px', m: '30px' }}>
-              <p>1. Choose how many major classes you want to take next quarter.</p>
-                <Stack spacing={3}></Stack>
-                  <FormAutocomplete
-                      name='majorclassnum'
-                      control={control}
-                      label='Choose number'
-                      options={majorclassnum}
-                    />
-              <p>2. Choose how many GE classes you want to take next quarter.</p>
-                <Stack spacing={3}></Stack>
-                  <FormAutocomplete
-                    name='geclassnum'
-                    control={control}
-                    label='Choose number'
-                    options={geclassnum}
-                  />
+              <p>
+                1. Choose how many major classes you want to take next quarter.
+              </p>
+              <Stack spacing={3}></Stack>
+              <FormAutocomplete
+                name='majorclassnum'
+                control={control}
+                label='Choose number'
+                options={majorclassnum}
+              />
+              <p>
+                2. Choose how many GE classes you want to take next quarter.
+              </p>
+              <Stack spacing={3}></Stack>
+              <FormAutocomplete
+                name='geclassnum'
+                control={control}
+                label='Choose number'
+                options={geclassnum}
+              />
               <p>3. Please check an expectation of your work load.</p>
-                <Stack spacing={3}></Stack>
-                  <Slider
-                    aria-label="Work Load"
-                    defaultValue={50}
-                    valueLabelDisplay="auto"
-                    step={10}
-                    marks
-                    min={10}
-                    max={100}
-                  />
+              <Stack spacing={3}></Stack>
+              <Slider
+                aria-label='Work Load'
+                defaultValue={50}
+                valueLabelDisplay='auto'
+                step={10}
+                marks
+                min={10}
+                max={100}
+              />
               <p>3. Please check an expectation of easiness.</p>
-                <Stack spacing={3}></Stack>
-                  <Slider
-                    aria-label="Easiness"
-                    defaultValue={50}
-                    valueLabelDisplay="auto"
-                    step={10}
-                    marks
-                    min={10}
-                    max={100}
-                  />
-              <Button variant='contained' type='submit' color = 'uclablue'>
+              <Stack spacing={3}></Stack>
+              <Slider
+                aria-label='Easiness'
+                defaultValue={50}
+                valueLabelDisplay='auto'
+                step={10}
+                marks
+                min={10}
+                max={100}
+              />
+              <Button variant='contained' type='submit' color='uclablue'>
                 SAVE
-              </Button>         
-            </Card>        
+              </Button>
+            </Card>
           </Container>
         </main>
         <Footer />
