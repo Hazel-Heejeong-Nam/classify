@@ -49,9 +49,9 @@ export default function Recommendations() {
                 {/*<Button variant='contained' type='submit' onClick={getRecs}>*/}
                 {/*  GET RECOMMENDATION*/}
                 {/*</Button>*/}
-                
+                { recommendation &&
                 <div style={{color:"white"}}>
-                <p>Here is your recommendation: </p>
+                <p>Here are your recommendations: </p>
                 <ul>
                 {recommendation.map((rec,index)=>{
                   return <li> Because you liked {rec[0]} : 
@@ -64,6 +64,8 @@ export default function Recommendations() {
                   })}
                 </ul>
                 </div>
+
+                }
               </Grid>
             </Container>
           </Stack>
